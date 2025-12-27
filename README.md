@@ -3,7 +3,7 @@
 🎥 Demo Video
 
 ▶ Watch full project walkthrough on YouTube
-👉 https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+👉https://youtu.be/aHQRZevUIjY?si=d3p-dDCw3hme8SjO
 
 The demo covers authentication, role-based access, tenant isolation, dashboards, projects, and tasks.
 
