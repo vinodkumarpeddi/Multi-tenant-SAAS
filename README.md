@@ -7,251 +7,382 @@
 
 The demo covers authentication, role-based access, tenant isolation, dashboards, projects, and tasks.
 
-(Replace YOUR_VIDEO_ID with your actual YouTube link)
+A role-based, multi-tenant SaaS application built with Node.js, Express, PostgreSQL, React, and Docker.  
+The platform supports system-level administration, tenant-level management, and tenant users with strict role-based access control and tenant isolation.
 
-📌 Overview
+This project demonstrates real-world SaaS architecture, RBAC, and containerized development workflows.
 
-This project demonstrates a real-world Multi-Tenant SaaS architecture, similar to platforms like Jira, Notion, or Asana.
+---
 
-Key Concepts Implemented
+## Table of Contents
 
-Tenant isolation (row-level multi-tenancy)
+- Overview  
+- Features  
+- Roles & Access Control  
+- Tech Stack  
+- Architecture Overview  
+- Project Structure  
+- Environment Variables  
+- Running the Project (Docker)  
+- Database Migrations & Seeds  
+- UI Flow  
+- Error Handling  
+- Design Decisions  
+- Future Improvements  
 
-Role-based access control (RBAC)
+---
 
-Subscription plan limits
+## Overview
 
-Secure JWT authentication
+This application implements a **multi-tenant SaaS architecture**, where:
 
-Dockerized development environment
+- A **Super Admin** manages tenants (organizations)
+- Each **Tenant** has its own users, projects, and tasks
+- **Tenant Admins** manage users and projects inside their tenant
+- **Users** can view projects and project details (tasks)
 
-👥 Roles & Access Control
-🛡️ Super Admin
+All data is strictly isolated by tenant.
 
-Login to system dashboard
+---
 
-View all tenants
+## Features
 
-View subscription plans and limits
+- JWT-based authentication  
+- Role-based access control (RBAC)  
+- Tenant isolation at database and API level  
+- Subscription plan limits (users, projects)  
+- Project and task management  
+- Read-only tenant plans  
+- Protected frontend routes  
+- Centralized error handling with toast notifications  
+- Fully Dockerized backend, frontend, and database  
 
-❌ No access to tenant-specific projects or users
+---
 
-🏢 Tenant Admin
+## Roles & Access Control
 
-Login to tenant dashboard
+### Super Admin
+- Login  
+- View tenants  
+- View subscription plan and limits (read-only)  
+- No access to tenant data (projects, users, tasks)  
 
-Create and manage projects
+### Tenant Admin
+- Login  
+- View dashboard (projects & users count)  
+- Create and manage projects  
+- Create and manage tasks inside projects  
+- Create and manage users (within limits)  
 
-Create and manage tasks
+### User
+- Login  
+- View dashboard (projects count)  
+- View projects  
+- View project details (tasks)  
+- Read-only access  
 
-Create and manage users (within plan limits)
+---
 
-👤 User
+## Tech Stack
 
-Login
+### Backend
+- Node.js  
+- Express.js  
+- PostgreSQL  
+- JWT (authentication)  
+- Docker  
 
-View dashboard
+### Frontend
+- React (Vite)  
+- React Router  
+- Axios  
+- Tailwind CSS  
+- React Toastify  
 
-View projects
+### DevOps
+- Docker  
+- Docker Compose  
 
-View project tasks (read-only)
+---
 
-✨ Features
+## Architecture Overview
 
-🔐 JWT-based authentication
+# Multi-Tenant SaaS Platform
 
-🧩 Role-based access control (RBAC)
+A role-based, multi-tenant SaaS application built with Node.js, Express, PostgreSQL, React, and Docker.  
+The platform supports system-level administration, tenant-level management, and tenant users with strict role-based access control and tenant isolation.
 
-🏢 Strict tenant data isolation
+This project demonstrates real-world SaaS architecture, RBAC, and containerized development workflows.
 
-📊 Subscription plan enforcement
+---
 
-📁 Project & task management
+## Table of Contents
 
-🔒 Protected frontend routes
+- Overview  
+- Features  
+- Roles & Access Control  
+- Tech Stack  
+- Architecture Overview  
+- Project Structure  
+- Environment Variables  
+- Running the Project (Docker)  
+- Database Migrations & Seeds  
+- UI Flow  
+- Error Handling  
+- Design Decisions  
+- Future Improvements  
 
-🔔 Centralized error handling with toasts
+---
 
-🐳 Fully Dockerized (Frontend + Backend + DB)
+## Overview
 
-🧱 Tech Stack
-Backend
+This application implements a **multi-tenant SaaS architecture**, where:
 
-Node.js
+- A **Super Admin** manages tenants (organizations)
+- Each **Tenant** has its own users, projects, and tasks
+- **Tenant Admins** manage users and projects inside their tenant
+- **Users** can view projects and project details (tasks)
 
-Express.js
+All data is strictly isolated by tenant.
 
-PostgreSQL
+---
 
-JWT Authentication
+## Features
 
-bcrypt
+- JWT-based authentication  
+- Role-based access control (RBAC)  
+- Tenant isolation at database and API level  
+- Subscription plan limits (users, projects)  
+- Project and task management  
+- Read-only tenant plans  
+- Protected frontend routes  
+- Centralized error handling with toast notifications  
+- Fully Dockerized backend, frontend, and database  
 
-Docker
+---
 
-Frontend
+## Roles & Access Control
 
-React (Vite)
+### Super Admin
+- Login  
+- View tenants  
+- View subscription plan and limits (read-only)  
+- No access to tenant data (projects, users, tasks)  
 
-React Router
+### Tenant Admin
+- Login  
+- View dashboard (projects & users count)  
+- Create and manage projects  
+- Create and manage tasks inside projects  
+- Create and manage users (within limits)  
 
-Axios
+### User
+- Login  
+- View dashboard (projects count)  
+- View projects  
+- View project details (tasks)  
+- Read-only access  
 
-Tailwind CSS
+---
 
-React Toastify
+## Tech Stack
 
-DevOps
+### Backend
+- Node.js  
+- Express.js  
+- PostgreSQL  
+- JWT (authentication)  
+- Docker  
 
-Docker
+### Frontend
+- React (Vite)  
+- React Router  
+- Axios  
+- Tailwind CSS  
+- React Toastify  
 
-Docker Compose
+### DevOps
+- Docker  
+- Docker Compose  
 
-🏗️ Architecture Overview
-Client (React SPA)
-        |
-        |  JWT / REST API
-        v
-Backend API (Express)
-        |
-        |  Tenant & Role Enforcement
-        v
-PostgreSQL (Multi-Tenant Database)
+---
 
-Highlights
+## Architecture Overview
 
-Stateless backend
+Client (React)
+    |
+    v
+   JWT
+    |
+    v
+API Gateway (Express)
+    |
+    v
+Tenant & Role Enforcement
+    |
+    v
+PostgreSQL (Tenant-isolated data)
 
-Tenant enforcement via middleware
+- Authentication middleware extracts user identity from JWT  
+- RBAC middleware enforces role permissions  
+- Tenant middleware enforces tenant isolation  
+- Frontend protected routes prevent unauthorized navigation  
 
-RBAC enforced at route level
+---
 
-Protected frontend routing
+## Project Structure
 
-📁 Project Structure
-Backend
-backend/
+### Backend
+
 ├── src/
-│   ├── controllers/
-│   ├── routes/
-│   ├── middleware/
-│   ├── migrations/
-│   ├── seeds/
-│   ├── utils/
-│   └── config/
+│ ├── app.js
+│ ├── server.js
+│ ├── config/
+│ │ └── db.js
+│ ├── controllers/
+│ ├── routes/
+│ ├── middleware/
+│ ├── migrations/
+│ ├── seeds/
+│ └── utils/
 ├── Dockerfile
 └── package.json
 
-Frontend
+### Frontend
 frontend/
 ├── src/
-│   ├── api/
-│   ├── components/
-│   ├── pages/
-│   ├── auth/
-│   ├── utils/
-│   └── App.jsx
+│ ├── api/
+│ ├── auth/
+│ ├── components/
+│ ├── pages/
+│ ├── utils/
+│ ├── App.jsx
+│ └── main.jsx
 ├── Dockerfile
 └── package.json
 
-⚙️ Environment Variables
-Backend (.env)
-PORT=5000
-DB_HOST=database
-DB_NAME=saas_db
-DB_USER=postgres
-DB_PASSWORD=postgres
-JWT_SECRET=your_secret_key
-JWT_EXPIRES_IN=1d
 
-Frontend (.env)
-VITE_API_URL=http://localhost:5000/api
+---
 
-🐳 Running the Project (Docker)
-Prerequisites
+## Environment Variables
 
-Docker
+### Backend (`.env`)
 
-Docker Compose
 
-Build & Run
+---
+
+## Environment Variables
+
+### Backend (`.env`)
+
+
+### Frontend (`.env`)
+
+
+---
+
+## Running the Project (Docker)
+
+### Prerequisites
+- Docker  
+- Docker Compose  
+
+### Build and Run
+
+
+---
+
+## Running the Project (Docker)
+
+### Prerequisites
+- Docker  
+- Docker Compose  
+
+### Build and Run
+
 docker-compose up -d --build
 
-Stop Containers
+
+### Stop Containers
 docker-compose down
 
-View Logs
+### view logs
 docker-compose logs backend
 docker-compose logs frontend
 
-🗄️ Database Migrations & Seeds
 
-On startup, the system automatically:
+---
 
-Runs database migrations
+## Database Migrations & Seeds
 
-Seeds initial data:
+- Migrations run automatically on container startup  
+- Seed data initializes:
+  - Super Admin account  
+  - Sample tenant  
+  - Tenant Admin user  
 
-Super Admin account
+This ensures the application is usable immediately after startup.
 
-Demo tenant
+---
 
-Tenant Admin & users
+## UI Flow
 
-This allows instant login after startup.
+### Super Admin
 
-🔄 UI Flow
-Super Admin
 Login → Tenants Dashboard
 
-Tenant Admin
+### Tenant Admin
+
 Login → Dashboard → Projects → Project Details (Tasks) → Users
 
-User
+
+### User
+
 Login → Dashboard → Projects → Project Details (Tasks)
 
 
-Tasks are intentionally scoped under Projects (no standalone task page).
+Tasks are part of **Project Details**, not a standalone module.
 
-❗ Error Handling
+---
 
-Consistent API error responses
+## Error Handling
 
-Frontend toast notifications
+- Backend returns consistent error messages  
+- Frontend displays errors using toast notifications  
+- Global Axios interceptor handles:
+  - 401 (session expired)  
+  - 403 (unauthorized access)  
+- Subscription limits are enforced and surfaced clearly  
 
-Global Axios interceptor handles:
+---
 
-401 → session expired
+## Design Decisions
 
-403 → unauthorized access
+- No task assignment to users (not required by specification)  
+- No billing or plan upgrade UI (plans are configuration-based)  
+- Tenant-wide projects visible to all tenant users  
+- Read-only subscription plans  
+- Per-route RBAC (read and write permissions separated)  
+- Super Admin isolated from tenant-scoped data  
 
-Subscription limit violations shown clearly
+These decisions keep the implementation aligned with requirements and avoid unnecessary complexity.
 
-🧠 Design Decisions
+---
 
-No billing UI (plan-based configuration only)
+## Future Improvements
 
-No cross-tenant data access
+- Task assignment to users  
+- Plan upgrade workflow  
+- Activity and audit logs  
+- Pagination and search  
+- Production deployment (AWS, CI/CD)  
 
-No over-engineering (clean & readable code)
+---
 
-Super Admin isolated from tenant data
+## Conclusion
 
-Per-route RBAC enforcement
+This project demonstrates a clean and practical implementation of a multi-tenant SaaS system with proper role separation, tenant isolation, and containerized development.  
+The focus is on correctness, clarity, and maintainability rather than over-engineering.
 
-🚀 Future Improvements
 
-Task assignment to users
 
-Activity & audit logs UI
-
-Pagination & advanced search
-
-CI/CD pipeline
-
-Production deployment (AWS)
-
-🏁 Conclusion
-
-This project demonstrates a clean, scalable, and secure multi-tenant SaaS architecture following real-world best practices.
-It focuses on correctness, maintainability, and clarity, making it ideal for interviews, portfolios, and production learning.
