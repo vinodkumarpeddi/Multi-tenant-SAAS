@@ -1,379 +1,257 @@
-# Multi-Tenant SaaS Platform
+🌐 Multi-Tenant SaaS Platform
+<p align="center"> <strong>A production-style, role-based Multi-Tenant SaaS application</strong><br/> Built with <b>Node.js, Express, PostgreSQL, React, and Docker</b> </p> <p align="center"> <img src="https://img.shields.io/badge/Backend-Node.js-green" /> <img src="https://img.shields.io/badge/Frontend-React-blue" /> <img src="https://img.shields.io/badge/Database-PostgreSQL-blue" /> <img src="https://img.shields.io/badge/Auth-JWT-orange" /> <img src="https://img.shields.io/badge/DevOps-Docker-informational" /> </p>
+🎥 Demo Video
 
-A role-based, multi-tenant SaaS application built with Node.js, Express, PostgreSQL, React, and Docker.  
-The platform supports system-level administration, tenant-level management, and tenant users with strict role-based access control and tenant isolation.
+▶ Watch full project walkthrough on YouTube
+👉 https://www.youtube.com/watch?v=YOUR_VIDEO_ID
 
-This project demonstrates real-world SaaS architecture, RBAC, and containerized development workflows.
+The demo covers authentication, role-based access, tenant isolation, dashboards, projects, and tasks.
 
----
+(Replace YOUR_VIDEO_ID with your actual YouTube link)
 
-## Table of Contents
+📌 Overview
 
-- Overview  
-- Features  
-- Roles & Access Control  
-- Tech Stack  
-- Architecture Overview  
-- Project Structure  
-- Environment Variables  
-- Running the Project (Docker)  
-- Database Migrations & Seeds  
-- UI Flow  
-- Error Handling  
-- Design Decisions  
-- Future Improvements  
+This project demonstrates a real-world Multi-Tenant SaaS architecture, similar to platforms like Jira, Notion, or Asana.
 
----
+Key Concepts Implemented
 
-## Overview
+Tenant isolation (row-level multi-tenancy)
 
-This application implements a **multi-tenant SaaS architecture**, where:
+Role-based access control (RBAC)
 
-- A **Super Admin** manages tenants (organizations)
-- Each **Tenant** has its own users, projects, and tasks
-- **Tenant Admins** manage users and projects inside their tenant
-- **Users** can view projects and project details (tasks)
+Subscription plan limits
 
-All data is strictly isolated by tenant.
+Secure JWT authentication
 
----
+Dockerized development environment
 
-## Features
+👥 Roles & Access Control
+🛡️ Super Admin
 
-- JWT-based authentication  
-- Role-based access control (RBAC)  
-- Tenant isolation at database and API level  
-- Subscription plan limits (users, projects)  
-- Project and task management  
-- Read-only tenant plans  
-- Protected frontend routes  
-- Centralized error handling with toast notifications  
-- Fully Dockerized backend, frontend, and database  
+Login to system dashboard
 
----
+View all tenants
 
-## Roles & Access Control
+View subscription plans and limits
 
-### Super Admin
-- Login  
-- View tenants  
-- View subscription plan and limits (read-only)  
-- No access to tenant data (projects, users, tasks)  
+❌ No access to tenant-specific projects or users
 
-### Tenant Admin
-- Login  
-- View dashboard (projects & users count)  
-- Create and manage projects  
-- Create and manage tasks inside projects  
-- Create and manage users (within limits)  
+🏢 Tenant Admin
 
-### User
-- Login  
-- View dashboard (projects count)  
-- View projects  
-- View project details (tasks)  
-- Read-only access  
+Login to tenant dashboard
 
----
+Create and manage projects
 
-## Tech Stack
+Create and manage tasks
 
-### Backend
-- Node.js  
-- Express.js  
-- PostgreSQL  
-- JWT (authentication)  
-- Docker  
+Create and manage users (within plan limits)
 
-### Frontend
-- React (Vite)  
-- React Router  
-- Axios  
-- Tailwind CSS  
-- React Toastify  
+👤 User
 
-### DevOps
-- Docker  
-- Docker Compose  
+Login
 
----
+View dashboard
 
-## Architecture Overview
+View projects
 
-# Multi-Tenant SaaS Platform
+View project tasks (read-only)
 
-A role-based, multi-tenant SaaS application built with Node.js, Express, PostgreSQL, React, and Docker.  
-The platform supports system-level administration, tenant-level management, and tenant users with strict role-based access control and tenant isolation.
+✨ Features
 
-This project demonstrates real-world SaaS architecture, RBAC, and containerized development workflows.
+🔐 JWT-based authentication
 
----
+🧩 Role-based access control (RBAC)
 
-## Table of Contents
+🏢 Strict tenant data isolation
 
-- Overview  
-- Features  
-- Roles & Access Control  
-- Tech Stack  
-- Architecture Overview  
-- Project Structure  
-- Environment Variables  
-- Running the Project (Docker)  
-- Database Migrations & Seeds  
-- UI Flow  
-- Error Handling  
-- Design Decisions  
-- Future Improvements  
+📊 Subscription plan enforcement
 
----
+📁 Project & task management
 
-## Overview
+🔒 Protected frontend routes
 
-This application implements a **multi-tenant SaaS architecture**, where:
+🔔 Centralized error handling with toasts
 
-- A **Super Admin** manages tenants (organizations)
-- Each **Tenant** has its own users, projects, and tasks
-- **Tenant Admins** manage users and projects inside their tenant
-- **Users** can view projects and project details (tasks)
+🐳 Fully Dockerized (Frontend + Backend + DB)
 
-All data is strictly isolated by tenant.
+🧱 Tech Stack
+Backend
 
----
+Node.js
 
-## Features
+Express.js
 
-- JWT-based authentication  
-- Role-based access control (RBAC)  
-- Tenant isolation at database and API level  
-- Subscription plan limits (users, projects)  
-- Project and task management  
-- Read-only tenant plans  
-- Protected frontend routes  
-- Centralized error handling with toast notifications  
-- Fully Dockerized backend, frontend, and database  
+PostgreSQL
 
----
+JWT Authentication
 
-## Roles & Access Control
+bcrypt
 
-### Super Admin
-- Login  
-- View tenants  
-- View subscription plan and limits (read-only)  
-- No access to tenant data (projects, users, tasks)  
+Docker
 
-### Tenant Admin
-- Login  
-- View dashboard (projects & users count)  
-- Create and manage projects  
-- Create and manage tasks inside projects  
-- Create and manage users (within limits)  
+Frontend
 
-### User
-- Login  
-- View dashboard (projects count)  
-- View projects  
-- View project details (tasks)  
-- Read-only access  
+React (Vite)
 
----
+React Router
 
-## Tech Stack
+Axios
 
-### Backend
-- Node.js  
-- Express.js  
-- PostgreSQL  
-- JWT (authentication)  
-- Docker  
+Tailwind CSS
 
-### Frontend
-- React (Vite)  
-- React Router  
-- Axios  
-- Tailwind CSS  
-- React Toastify  
+React Toastify
 
-### DevOps
-- Docker  
-- Docker Compose  
+DevOps
 
----
+Docker
 
-## Architecture Overview
+Docker Compose
 
-Client (React)
-    |
-    v
-   JWT
-    |
-    v
-API Gateway (Express)
-    |
-    v
-Tenant & Role Enforcement
-    |
-    v
-PostgreSQL (Tenant-isolated data)
+🏗️ Architecture Overview
+Client (React SPA)
+        |
+        |  JWT / REST API
+        v
+Backend API (Express)
+        |
+        |  Tenant & Role Enforcement
+        v
+PostgreSQL (Multi-Tenant Database)
 
-- Authentication middleware extracts user identity from JWT  
-- RBAC middleware enforces role permissions  
-- Tenant middleware enforces tenant isolation  
-- Frontend protected routes prevent unauthorized navigation  
+Highlights
 
----
+Stateless backend
 
-## Project Structure
+Tenant enforcement via middleware
 
-### Backend
+RBAC enforced at route level
 
+Protected frontend routing
+
+📁 Project Structure
+Backend
+backend/
 ├── src/
-│ ├── app.js
-│ ├── server.js
-│ ├── config/
-│ │ └── db.js
-│ ├── controllers/
-│ ├── routes/
-│ ├── middleware/
-│ ├── migrations/
-│ ├── seeds/
-│ └── utils/
+│   ├── controllers/
+│   ├── routes/
+│   ├── middleware/
+│   ├── migrations/
+│   ├── seeds/
+│   ├── utils/
+│   └── config/
 ├── Dockerfile
 └── package.json
 
-### Frontend
+Frontend
 frontend/
 ├── src/
-│ ├── api/
-│ ├── auth/
-│ ├── components/
-│ ├── pages/
-│ ├── utils/
-│ ├── App.jsx
-│ └── main.jsx
+│   ├── api/
+│   ├── components/
+│   ├── pages/
+│   ├── auth/
+│   ├── utils/
+│   └── App.jsx
 ├── Dockerfile
 └── package.json
 
+⚙️ Environment Variables
+Backend (.env)
+PORT=5000
+DB_HOST=database
+DB_NAME=saas_db
+DB_USER=postgres
+DB_PASSWORD=postgres
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=1d
 
----
+Frontend (.env)
+VITE_API_URL=http://localhost:5000/api
 
-## Environment Variables
+🐳 Running the Project (Docker)
+Prerequisites
 
-### Backend (`.env`)
+Docker
 
+Docker Compose
 
----
-
-## Environment Variables
-
-### Backend (`.env`)
-
-
-### Frontend (`.env`)
-
-
----
-
-## Running the Project (Docker)
-
-### Prerequisites
-- Docker  
-- Docker Compose  
-
-### Build and Run
-
-
----
-
-## Running the Project (Docker)
-
-### Prerequisites
-- Docker  
-- Docker Compose  
-
-### Build and Run
-
+Build & Run
 docker-compose up -d --build
 
-
-### Stop Containers
+Stop Containers
 docker-compose down
 
-### view logs
+View Logs
 docker-compose logs backend
 docker-compose logs frontend
 
+🗄️ Database Migrations & Seeds
 
----
+On startup, the system automatically:
 
-## Database Migrations & Seeds
+Runs database migrations
 
-- Migrations run automatically on container startup  
-- Seed data initializes:
-  - Super Admin account  
-  - Sample tenant  
-  - Tenant Admin user  
+Seeds initial data:
 
-This ensures the application is usable immediately after startup.
+Super Admin account
 
----
+Demo tenant
 
-## UI Flow
+Tenant Admin & users
 
-### Super Admin
+This allows instant login after startup.
 
+🔄 UI Flow
+Super Admin
 Login → Tenants Dashboard
 
-### Tenant Admin
-
+Tenant Admin
 Login → Dashboard → Projects → Project Details (Tasks) → Users
 
-
-### User
-
+User
 Login → Dashboard → Projects → Project Details (Tasks)
 
 
-Tasks are part of **Project Details**, not a standalone module.
+Tasks are intentionally scoped under Projects (no standalone task page).
 
----
+❗ Error Handling
 
-## Error Handling
+Consistent API error responses
 
-- Backend returns consistent error messages  
-- Frontend displays errors using toast notifications  
-- Global Axios interceptor handles:
-  - 401 (session expired)  
-  - 403 (unauthorized access)  
-- Subscription limits are enforced and surfaced clearly  
+Frontend toast notifications
 
----
+Global Axios interceptor handles:
 
-## Design Decisions
+401 → session expired
 
-- No task assignment to users (not required by specification)  
-- No billing or plan upgrade UI (plans are configuration-based)  
-- Tenant-wide projects visible to all tenant users  
-- Read-only subscription plans  
-- Per-route RBAC (read and write permissions separated)  
-- Super Admin isolated from tenant-scoped data  
+403 → unauthorized access
 
-These decisions keep the implementation aligned with requirements and avoid unnecessary complexity.
+Subscription limit violations shown clearly
 
----
+🧠 Design Decisions
 
-## Future Improvements
+No billing UI (plan-based configuration only)
 
-- Task assignment to users  
-- Plan upgrade workflow  
-- Activity and audit logs  
-- Pagination and search  
-- Production deployment (AWS, CI/CD)  
+No cross-tenant data access
 
----
+No over-engineering (clean & readable code)
 
-## Conclusion
+Super Admin isolated from tenant data
 
-This project demonstrates a clean and practical implementation of a multi-tenant SaaS system with proper role separation, tenant isolation, and containerized development.  
-The focus is on correctness, clarity, and maintainability rather than over-engineering.
+Per-route RBAC enforcement
 
+🚀 Future Improvements
+
+Task assignment to users
+
+Activity & audit logs UI
+
+Pagination & advanced search
+
+CI/CD pipeline
+
+Production deployment (AWS)
+
+🏁 Conclusion
+
+This project demonstrates a clean, scalable, and secure multi-tenant SaaS architecture following real-world best practices.
+It focuses on correctness, maintainability, and clarity, making it ideal for interviews, portfolios, and production learning.
