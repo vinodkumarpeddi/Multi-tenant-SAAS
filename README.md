@@ -1,4 +1,13 @@
 # Multi-Tenant SaaS Platform
+A production-style, role-based Multi-Tenant SaaS application
+Built with Node.js, Express, PostgreSQL, React, and Docker
+
+    
+
+🎥 Demo Video
+▶ Watch full project walkthrough on YouTube 👉 https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+
+The demo covers authentication, role-based access, tenant isolation, dashboards, projects, and tasks.
 
 A role-based, multi-tenant SaaS application built with Node.js, Express, PostgreSQL, React, and Docker.  
 The platform supports system-level administration, tenant-level management, and tenant users with strict role-based access control and tenant isolation.
