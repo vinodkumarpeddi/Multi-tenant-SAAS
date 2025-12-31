@@ -1,3 +1,4 @@
+
 # Multi-Tenant SaaS Platform
 A production-style, role-based Multi-Tenant SaaS application
 Built with Node.js, Express, PostgreSQL, React, and Docker
@@ -6,6 +7,14 @@ Built with Node.js, Express, PostgreSQL, React, and Docker
 
 🎥 Demo Video
 ▶ Watch full project walkthrough on YouTube 👉 https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+=======
+🌐 Multi-Tenant SaaS Platform
+<p align="center"> <strong>A production-style, role-based Multi-Tenant SaaS application</strong><br/> Built with <b>Node.js, Express, PostgreSQL, React, and Docker</b> </p> <p align="center"> <img src="https://img.shields.io/badge/Backend-Node.js-green" /> <img src="https://img.shields.io/badge/Frontend-React-blue" /> <img src="https://img.shields.io/badge/Database-PostgreSQL-blue" /> <img src="https://img.shields.io/badge/Auth-JWT-orange" /> <img src="https://img.shields.io/badge/DevOps-Docker-informational" /> </p>
+🎥 Demo Video
+
+▶ Watch full project walkthrough on YouTube
+👉https://youtu.be/aHQRZevUIjY?si=d3p-dDCw3hme8SjO
+>>>>>>> ea568d3cdd86d71e3898ac20c4e5832768e01870
 
 The demo covers authentication, role-based access, tenant isolation, dashboards, projects, and tasks.
 
@@ -385,4 +394,6 @@ These decisions keep the implementation aligned with requirements and avoid unne
 
 This project demonstrates a clean and practical implementation of a multi-tenant SaaS system with proper role separation, tenant isolation, and containerized development.  
 The focus is on correctness, clarity, and maintainability rather than over-engineering.
+
+
 
