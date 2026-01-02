@@ -14,7 +14,7 @@ Built with Node.js, Express, PostgreSQL, React, and Docker
 
 ▶ Watch full project walkthrough on YouTube
 👉https://youtu.be/aHQRZevUIjY?si=d3p-dDCw3hme8SjO
->>>>>>> ea568d3cdd86d71e3898ac20c4e5832768e01870
+
 
 The demo covers authentication, role-based access, tenant isolation, dashboards, projects, and tasks.
 
