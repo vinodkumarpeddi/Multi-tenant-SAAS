@@ -6,7 +6,7 @@ Built with Node.js, Express, PostgreSQL, React, and Docker
     
 
 🎥 Demo Video
-▶ Watch full project walkthrough on YouTube 👉 https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+▶ Watch full project walkthrough on YouTube 👉 https://youtu.be/aHQRZevUIjY?si=d3p-dDCw3hme8SjO
 =======
 🌐 Multi-Tenant SaaS Platform
 <p align="center"> <strong>A production-style, role-based Multi-Tenant SaaS application</strong><br/> Built with <b>Node.js, Express, PostgreSQL, React, and Docker</b> </p> <p align="center"> <img src="https://img.shields.io/badge/Backend-Node.js-green" /> <img src="https://img.shields.io/badge/Frontend-React-blue" /> <img src="https://img.shields.io/badge/Database-PostgreSQL-blue" /> <img src="https://img.shields.io/badge/Auth-JWT-orange" /> <img src="https://img.shields.io/badge/DevOps-Docker-informational" /> </p>
